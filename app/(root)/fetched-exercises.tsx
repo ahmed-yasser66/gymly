@@ -19,6 +19,9 @@ async function getData() {
         "x-rapidapi-key": process.env.API_KEY as string,
         "x-rapidapi-host": "exercisedb.p.rapidapi.com",
       },
+      next: {
+        revalidate: 3600,
+      },
     },
   );
 

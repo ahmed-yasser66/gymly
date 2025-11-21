@@ -187,8 +187,30 @@ export default function Exercises({
   const [visibleCount, setVisibleCount] = useState(12); // Pagination state
   const [isPending, startTransition] = useTransition();
 
-  const data = initialExercises;
-  const isLoading = false;
+  // Initialize with SSR data, then update with full list
+  const [data, setData] = useState<Exercise[]>(initialExercises);
+
+  // Fetch full list in background
+  useEffect(() => {
+    const fetchFullList = async () => {
+      try {
+        const res = await fetch("/api/exercises");
+        if (!res.ok) throw new Error("Failed to fetch full list");
+        const fullList = await res.json();
+
+        // Merge logic: Create a map of existing exercises to avoid duplicates if needed,
+        // but since we want the full list for filtering, we can just replace the state
+        // or merge carefully. Here, replacing is safer for client-side filtering consistency.
+        startTransition(() => {
+          setData(fullList);
+        });
+      } catch (error) {
+        console.error("Background fetch failed:", error);
+      }
+    };
+
+    fetchFullList();
+  }, []);
 
   // Debounce search input
   useEffect(() => {
@@ -276,13 +298,10 @@ export default function Exercises({
       <ResultsCount count={filteredExercises.length} isFiltered={isFiltered} />
 
       {/* Exercise Grid */}
-      <ExerciseGrid
-        exercises={visibleExercises}
-        isLoading={isLoading || isPending}
-      />
+      <ExerciseGrid exercises={visibleExercises} isLoading={isPending} />
 
       {/* Load More Button */}
-      {hasMore && !isLoading && (
+      {hasMore && (
         <div className="mt-12 flex justify-center">
           <button
             onClick={handleLoadMore}

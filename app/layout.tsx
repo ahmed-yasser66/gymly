@@ -64,7 +64,7 @@ export default function RootLayout({
           className="bg-primary fixed top-0 left-3/4 z-50 min-h-screen w-1/4"
         ></div>
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

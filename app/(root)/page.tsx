@@ -1,13 +1,10 @@
 import { Metadata } from "next";
 
+import Hero from "./hero";
 import dynamic from "next/dynamic";
-import HeroSkeleton from "./hero-skeleton";
 import GallerySkeleton from "./gallery-skeleton";
 import MerchSkeleton from "./merch-skeleton";
 
-const Hero = dynamic(() => import("./hero"), {
-  loading: () => <HeroSkeleton />,
-});
 const Exercise = dynamic(() => import("./exercise"));
 const Merch = dynamic(() => import("./merch"), {
   loading: () => <MerchSkeleton />,
