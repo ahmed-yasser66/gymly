@@ -1,9 +1,7 @@
 import { redirect } from "next/navigation";
 import { PlayCircle, Info } from "lucide-react";
 import Image from "next/image";
-import { Suspense } from "react";
 import { Metadata } from "next";
-import ExerciseDetailSkeleton from "./exercise-detail-skeleton";
 import LiteYouTube from "@/components/ui/lite-youtube";
 
 export async function generateMetadata({
@@ -64,6 +62,17 @@ interface IData {
 // ============================================================================
 // UTILS
 // ============================================================================
+
+
+export default async function Page({ params }: { params: { id: string } }) {
+  return (
+    <div>
+      <div className="mt-20 mb-40 min-h-screen bg-black">
+        <RenderExerciseDetails params={params} />
+      </div>
+    </div>
+  );
+}
 async function fetchExerciseData(id: string) {
   let data: IData = {};
   const res = await fetch(
@@ -131,6 +140,7 @@ export const RenderExerciseDetails = async ({
           className="h-full w-full object-cover"
           priority
           sizes="100vw"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
         <div className="absolute right-0 bottom-0 left-0 p-6">
@@ -221,15 +231,3 @@ export const RenderExerciseDetails = async ({
     </>
   );
 };
-
-export default async function Page({ params }: { params: { id: string } }) {
-  return (
-    <div>
-      <div className="mt-20 mb-40 min-h-screen bg-black">
-        <Suspense fallback={<ExerciseDetailSkeleton />}>
-          <RenderExerciseDetails params={params} />
-        </Suspense>
-      </div>
-    </div>
-  );
-}

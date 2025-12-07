@@ -1,8 +1,7 @@
 import { Target } from 'lucide-react';
 import Image from "next/image";
 import Link from 'next/link';
-export default function ExerciseCard(props: { [key: string]: string }) {
-  const { name, id, difficulty, gifUrl, description, target } = props;
+export default function ExerciseCard({ name, id, difficulty, gifUrl, description, target }: { [key: string]: string }) {
 
   return (
     <div className=" lg:min-h-fit w-full bg-black flex items-center justify-center">

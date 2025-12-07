@@ -42,7 +42,7 @@ export default function Home() {
         className="section-lazy max-w-wide mx-auto mt-40 mb-40 px-10 2xl:px-0 space-y-20"
         id="exercises"
       >
-        {Array.from({ length: 6 }, (_, idx) => (
+        {Array.from({ length: 10 }, (_, idx) => (
           <ExerciseCardSkeleton key={idx} />
         ))}
       </section>}>

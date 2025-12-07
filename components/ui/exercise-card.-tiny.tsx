@@ -12,6 +12,7 @@ interface ExerciseCardTinyProps {
   gifUrl: string;
   bodyPart: string;
   name: string;
+  priority?: boolean;
 }
 
 // ============================================================================
@@ -37,8 +38,13 @@ const getDifficultyColor = (difficulty: string): string => {
 // COMPONENT
 // ============================================================================
 
-export default function ExerciseCardTiny(props: ExerciseCardTinyProps) {
-  const { id, difficulty, gifUrl, bodyPart, name } = props;
+export default function ExerciseCardTiny({ id,
+  difficulty,
+  gifUrl,
+  bodyPart,
+  name,
+  priority = false }: ExerciseCardTinyProps) {
+
 
   return (
     <TransitionLink
@@ -56,9 +62,11 @@ export default function ExerciseCardTiny(props: ExerciseCardTinyProps) {
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
-          priority
-          placeholder='blur'
-          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8v4ehHgAGuQI8M1McSAAAAABJRU5ErkJggg=='
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "low"}
         />
 
         {/* Difficulty Badge */}

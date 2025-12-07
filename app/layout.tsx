@@ -67,7 +67,9 @@ export default function RootLayout({
           id="banner4"
           className="bg-primary fixed top-0 left-3/4 z-50 min-h-screen w-1/4"
         ></div>
-        {children}
+        <main>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

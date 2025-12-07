@@ -25,10 +25,9 @@ export default function Gallery() {
               alt="image from gym"
               quality={75}
               loading="lazy"
-              className="gallery__image"
-              width={0}
-              height={0}
-              sizes="auto"
+              className="gallery__image size-full"
+              width={500}
+              height={500}
               placeholder='blur'
               blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8v4ehHgAGuQI8M1McSAAAAABJRU5ErkJggg=='
             />
