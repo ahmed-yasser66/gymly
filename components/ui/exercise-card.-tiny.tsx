@@ -1,5 +1,6 @@
 import Image from "next/image";
 import TransitionLink from "../transition-link";
+import Head from "next/head";
 
 // ============================================================================
 // TYPES
@@ -44,6 +45,9 @@ export default function ExerciseCardTiny(props: ExerciseCardTinyProps) {
       href={`/exercises/${id}`}
       className="group block cursor-pointer overflow-hidden rounded-lg bg-zinc-900 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-400/20"
     >
+      <Head>
+        <link rel="preload" as="image" href={gifUrl} fetchPriority="high" />
+      </Head>
       {/* Image Container - Fixed height to prevent CLS */}
       <div className="relative h-80 w-full overflow-hidden bg-zinc-800">
         <Image
@@ -52,7 +56,9 @@ export default function ExerciseCardTiny(props: ExerciseCardTinyProps) {
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
-          loading="lazy"
+          priority
+          placeholder='blur'
+          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8v4ehHgAGuQI8M1McSAAAAABJRU5ErkJggg=='
         />
 
         {/* Difficulty Badge */}

@@ -1,17 +1,11 @@
 import { Metadata } from "next";
 
 import Hero from "./hero";
-import dynamic from "next/dynamic";
-import GallerySkeleton from "./gallery-skeleton";
-import MerchSkeleton from "./merch-skeleton";
-
-const Exercise = dynamic(() => import("./exercise"));
-const Merch = dynamic(() => import("./merch"), {
-  loading: () => <MerchSkeleton />,
-});
-const Gallery = dynamic(() => import("./gallery"), {
-  loading: () => <GallerySkeleton />,
-});
+import Merch from "./merch";
+import Gallery from "./gallery";
+import Exercise from "./exercise";
+import { Suspense } from "react";
+import ExerciseCardSkeleton from "./exercise-skeleton";
 
 export const metadata: Metadata = {
   title: "GYMLY",
@@ -40,11 +34,20 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Hero />
       <Merch />
       <Gallery />
-      <Exercise />
-    </>
+      <Suspense fallback={<section
+        className="section-lazy max-w-wide mx-auto mt-40 mb-40 px-10 2xl:px-0 space-y-20"
+        id="exercises"
+      >
+        {Array.from({ length: 6 }, (_, idx) => (
+          <ExerciseCardSkeleton key={idx} />
+        ))}
+      </section>}>
+        <Exercise />
+      </Suspense>
+    </main>
   );
 }

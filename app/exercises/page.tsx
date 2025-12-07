@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 async function fetchExercises() {
   const res = await fetch(
-    "https://exercisedb.p.rapidapi.com/exercises?limit=50", // Reduced limit for faster initial load
+    "https://exercisedb.p.rapidapi.com/exercises?limit=20", // Reduced limit for faster initial load
     {
       headers: {
         "x-rapidapi-key": process.env.API_KEY as string,

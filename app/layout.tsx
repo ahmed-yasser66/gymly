@@ -45,6 +45,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://v2.exercisedb.io" />
+        <link rel="dns-prefetch" href="https://v2.exercisedb.io" />
+      </head>
       <body className={`${outfit.variable}`}>
         <Navbar />
         <div

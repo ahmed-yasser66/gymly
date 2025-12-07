@@ -26,6 +26,11 @@ export default function Gallery() {
               quality={75}
               loading="lazy"
               className="gallery__image"
+              width={0}
+              height={0}
+              sizes="auto"
+              placeholder='blur'
+              blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8v4ehHgAGuQI8M1McSAAAAABJRU5ErkJggg=='
             />
           );
         })}

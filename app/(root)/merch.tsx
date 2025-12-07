@@ -61,6 +61,8 @@ export default function Merch() {
             className="aspect-square object-contain"
             loading="lazy"
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+            placeholder='blur'
+            blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8v4ehHgAGuQI8M1McSAAAAABJRU5ErkJggg=='
           />
           <div className="absolute -bottom-20 -z-10 h-1/2 w-full bg-[#3b3b3b]">
             <p className="absolute bottom-8 left-1/2 -translate-x-1/2">
