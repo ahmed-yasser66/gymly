@@ -41,8 +41,8 @@ export default function Navbar() {
           <Image
             src={Logo}
             alt="logo"
-            width={75}
-            height={75}
+            width={60}
+            height={60}
             fetchPriority="high"
             priority
           />

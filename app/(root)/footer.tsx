@@ -36,7 +36,7 @@ const programs = [
 
 export default function Footer() {
   return (
-    <footer className="border-t-4 border-yellow-400 bg-black">
+    <footer className="border-t-4 border-yellow-400 bg-black min-h-[calc(80vh,45rem)]">
       <div className="max-w-wide mx-auto px-8 py-12 text-3xl">
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
 

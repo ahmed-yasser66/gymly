@@ -3,12 +3,14 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "./(root)/footer";
+import localFont from "next/font/local";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const outfit = localFont({
   display: "swap",
   preload: true,
-});
+  variable: "--font-outfit",
+  src: "../public/outfit.ttf",
+})
 
 export const metadata: Metadata = {
   title: {

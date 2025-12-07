@@ -27,8 +27,10 @@ export default function Hero() {
         alt="background lifting weights"
         className="order-1 w-full rounded-md object-cover lg:order-2 lg:max-w-1/2"
         fetchPriority="high"
+        width={675}
+        height={675}
         priority
-        sizes="(max-width: 1024px) 100vw, 50vw"
+        // sizes="(max-width: 1024px) 100vw, 50vw"
         quality={85}
         placeholder="blur"
       />
