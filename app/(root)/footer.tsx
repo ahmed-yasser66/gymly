@@ -8,6 +8,7 @@ import {
   MapPin,
   Dumbbell,
 } from "lucide-react";
+import { connection } from "next/server";
 
 const socials = [
   { icon: Facebook, label: "facebook" },
@@ -164,7 +165,7 @@ function NewsletterForm() {
   );
 }
 
-function FooterBottom() {
+async function FooterBottom() {
   return (
     <div className="max-w-wide mx-auto flex min-h-[120px] flex-col items-center justify-between gap-4 px-8 py-12 text-2xl md:flex-row">
       <p className="text-gray-400">
