@@ -10,7 +10,7 @@ const outfit = localFont({
   preload: true,
   variable: "--font-outfit",
   src: "../public/outfit.ttf",
-})
+});
 
 export const metadata: Metadata = {
   title: {
@@ -26,17 +26,19 @@ export const metadata: Metadata = {
     title: "GYMLY",
     description:
       "GYMLY is your ultimate fitness destination — modern equipment, expert trainers, and personalized workout plans designed to help you build strength, burn fat, and transform your body.",
-    url: "http://localhost:3000",
+    url: "https://gymly-l0xeuq36e-dev-ahmed-yassers-projects.vercel.app",
     siteName: "GYMLY",
     images: [
       {
-        url: "http://localhost:3000/opengraph.jpg",
+        url: "https://gymly-l0xeuq36e-dev-ahmed-yassers-projects.vercel.app/opengraph.jpg",
       },
     ],
     locale: "en_US",
     type: "website",
   },
-  metadataBase: new URL("https://ahmed-yasser.vercel.app"),
+  metadataBase: new URL(
+    "https://gymly-l0xeuq36e-dev-ahmed-yassers-projects.vercel.app",
+  ),
   keywords: ["GYMLY", "Gym", "workout", "exercises"],
 };
 
@@ -69,9 +71,7 @@ export default function RootLayout({
           id="banner4"
           className="bg-primary fixed top-0 left-3/4 z-50 min-h-screen w-1/4"
         ></div>
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
