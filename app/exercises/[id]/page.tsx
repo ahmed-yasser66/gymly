@@ -11,38 +11,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const { data } = await fetchExerciseData(id);
-
-  if (!data) {
-    return {
-      title: "Exercise Not Found",
-    };
-  }
-
+  const url = `https://gymly-one.vercel.app/exercises/${id}`;
   return {
-    title: `${data.name} - Exercise Guide`,
-    description:
-      data.description ||
-      `Learn how to properly perform ${data.name}. Target: ${data.target}. Difficulty: ${data.difficulty}.`,
+    title: `${data.name} | GYMLY`,
+    description: data.description,
+    alternates: { canonical: url },
     openGraph: {
-      title: `${data.name} - Exercise Guide`,
-      description:
-        data.description ||
-        `Learn how to properly perform ${data.name}. Target: ${data.target}.`,
-      images: [
-        {
-          url: data.gifUrl || "/default-exercise.gif",
-          width: 800,
-          height: 600,
-          alt: data.name,
-        },
-      ],
+      type: "article",
+      url,
+      title: data.name,
+      description: data.description,
+      images: ["/images/opengraph.jpg"],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: `${data.name} - Exercise Guide`,
-      description: `Target: ${data.target} | Difficulty: ${data.difficulty}`,
-      images: [data.gifUrl || "/default-exercise.gif"],
-    },
+    keywords: ["exercise", "workout", "gym", "gymly"],
   };
 }
 
@@ -62,7 +43,6 @@ interface IData {
 // ============================================================================
 // UTILS
 // ============================================================================
-
 
 export default async function Page({ params }: { params: { id: string } }) {
   return (
@@ -102,6 +82,14 @@ export const RenderExerciseDetails = async ({
 }) => {
   const { id } = await params;
   const { data } = await fetchExerciseData(id);
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: data.name,
+    author: [{ "@type": "Person", name: "Pedro Tech" }],
+    image: [data.gifUrl ?? "https://gymly-one.vercel.app/opengraph.jpg"],
+    mainEntityOfPage: `https://gymly-one.vercel.app/exercises/${id}`,
+  };
   const ytRes = await fetch(
     `https://youtube-search-and-download.p.rapidapi.com/search?query=${data.name}`,
     {
@@ -131,6 +119,10 @@ export const RenderExerciseDetails = async ({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       {/* Hero Image Section */}
       <div className="relative h-[50rem]">
         <Image

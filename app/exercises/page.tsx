@@ -1,27 +1,20 @@
-import { Metadata } from "next";
 import Exercises, { Exercise } from "./exercises";
-
-export const metadata: Metadata = {
-  title: "Exercises",
-};
 
 async function fetchExercises() {
   const res = await fetch(
-    "https://exercisedb.p.rapidapi.com/exercises?limit=20", // Reduced limit for faster initial load
+    "https://exercisedb.p.rapidapi.com/exercises?limit=20",
     {
       headers: {
         "x-rapidapi-key": process.env.API_KEY as string,
         "x-rapidapi-host": "exercisedb.p.rapidapi.com",
       },
       next: {
-        revalidate: 3600, // Cache for 1 hour
+        revalidate: 3600,
       },
     },
   );
 
   if (!res.ok) {
-    // Handle error or return empty array
-    console.error("Failed to fetch exercises");
     return [];
   }
 

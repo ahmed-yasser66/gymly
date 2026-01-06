@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <nav className="max-w-wide mx-auto mt-16 px-10">
       <div className="wrapper flex w-full items-center justify-between overflow-clip">
-        <Link href={"/"} className="block size-24">
+        <Link prefetch href={"/"} className="block size-24">
           <Image
             src={Logo}
             alt="logo"
@@ -63,6 +63,7 @@ export default function Navbar() {
             <li>
               <Link
                 href={"/"}
+                prefetch
                 className={`${activeTab == "/" ? "text-primary" : ""} `}
               >
                 <Image src={Logo} alt="logo" className="size-28" />
@@ -74,6 +75,7 @@ export default function Navbar() {
             <li>
               <Link
                 href={"/"}
+                prefetch
                 className={`${activeTab == "/" ? "text-primary" : "text-white"}`}
                 onClick={handleCloseMenu}
               >
@@ -82,6 +84,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                prefetch
                 href={"/about"}
                 className={`${activeTab == "/about" ? "text-primary" : "text-white"}`}
                 onClick={handleCloseMenu}
@@ -91,6 +94,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                prefetch
                 href={"/exercises"}
                 className={`${activeTab == "/exercises" ? "text-primary" : "text-white"}`}
                 onClick={handleCloseMenu}
@@ -110,7 +114,7 @@ export default function Navbar() {
               Need help ?
             </li>
             <li>
-              <Link href={"/contact-us"} onClick={handleCloseMenu}>
+              <Link prefetch href={"/contact-us"} onClick={handleCloseMenu}>
                 Contact Us
               </Link>
             </li>
@@ -118,20 +122,28 @@ export default function Navbar() {
         </div>
         <ul className={`hidden gap-10 text-3xl lg:flex`}>
           <li className={`${activeTab == "/" ? activeTabStyles : ""} `}>
-            <Link href={"/"}>Home</Link>
+            <Link prefetch href={"/"}>
+              Home
+            </Link>
           </li>
           <li className={`${activeTab == "/about" ? activeTabStyles : ""} `}>
-            <Link href={"/about"}>About</Link>
+            <Link prefetch href={"/about"}>
+              About
+            </Link>
           </li>
           <li
             className={`${activeTab == "/exercises" ? activeTabStyles : ""} `}
           >
-            <Link href={"/exercises"}>Exercises</Link>
+            <Link prefetch href={"/exercises"}>
+              Exercises
+            </Link>
           </li>
           <li
             className={`${activeTab == "/contact-us" ? activeTabStyles : ""} `}
           >
-            <Link href={"/contact-us"}>Contact Us</Link>
+            <Link prefetch href={"/contact-us"}>
+              Contact Us
+            </Link>
           </li>
         </ul>
       </div>

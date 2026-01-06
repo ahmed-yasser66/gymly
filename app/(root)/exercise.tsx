@@ -13,6 +13,8 @@ export default async function Exercise() {
     },
   );
   const data = await res.json();
+
+  console.log(data)
   return (
     <section
       className="section-lazy max-w-wide mx-auto mt-40 mb-40 px-10 2xl:px-0"

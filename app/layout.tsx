@@ -1,9 +1,9 @@
+import localFont from "next/font/local";
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "./(root)/footer";
-import localFont from "next/font/local";
 
 const outfit = localFont({
   display: "swap",
@@ -26,20 +26,20 @@ export const metadata: Metadata = {
     title: "GYMLY",
     description:
       "GYMLY is your ultimate fitness destination — modern equipment, expert trainers, and personalized workout plans designed to help you build strength, burn fat, and transform your body.",
-    url: "https://gymly-l0xeuq36e-dev-ahmed-yassers-projects.vercel.app",
+    url: "https://gymly-one.vercel.app/",
     siteName: "GYMLY",
     images: [
       {
-        url: "https://gymly-l0xeuq36e-dev-ahmed-yassers-projects.vercel.app/opengraph.jpg",
+        url: "https://gymly-one.vercel.app/opengraph.jpg",
       },
     ],
     locale: "en_US",
     type: "website",
   },
-  metadataBase: new URL(
-    "https://gymly-l0xeuq36e-dev-ahmed-yassers-projects.vercel.app",
-  ),
+  metadataBase: new URL("https://gymly-one.vercel.app/"),
   keywords: ["GYMLY", "Gym", "workout", "exercises"],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
